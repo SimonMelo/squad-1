@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div>
       <AppBar position="static" style={{ marginBottom: "16px" }}>
-        <Toolbar>
+        <Toolbar style={{ background: "transparent"}}>
           <img
             src={logo}
             alt="Logo"
