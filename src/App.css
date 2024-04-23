@@ -2,6 +2,23 @@
   text-align: center;
 }
 
+body {
+  background-image: url('../src/img/imageBackground.png');
+  background-size: cover;
+  background-position: center;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(90deg, rgba(0, 210, 155, 0.5), rgba(68, 138, 255, 0.5));
+  z-index: -1;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

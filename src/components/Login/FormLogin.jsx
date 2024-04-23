@@ -1,25 +1,28 @@
 import React from "react";
+import "./Login.css"
 import { Link as RouterLink } from "react-router-dom";
 import { Container, Typography, TextField, Button } from "@mui/material";
 
 const LoginForm = () => {
   return (
     <Container
-      maxWidth="sm"
       style={{
+        backgroundColor: "white",
         marginTop: "50px",
         padding: "20px",
         border: "1px solid #ccc",
         borderRadius: "10px",
         height: "400px",
         width: "80%",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)"
       }}
+      maxWidth="sm"
     >
-      <Typography variant="h5" align="center" gutterBottom>
+      <Typography className="text-modifed" variant="h5" align="center" gutterBottom>
         Login
       </Typography>
       <form>
-        <TextField fullWidth label="Email" variant="outlined" margin="normal" />
+        <TextField fullWidth label="CPF/CNPJ" variant="outlined" margin="normal" />
         <TextField
           fullWidth
           label="Senha"
@@ -33,7 +36,7 @@ const LoginForm = () => {
         >
           Esqueci minha senha
         </RouterLink>
-        <Button variant="contained" color="primary" fullWidth>
+        <Button className="btn-login" variant="contained" color="primary" fullWidth>
           Login
         </Button>
       </form>

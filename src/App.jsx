@@ -15,32 +15,20 @@ import "./App.css";
 const App = () => {
   return (
     <div>
-      <AppBar position="static" style={{ marginBottom: "16px" }}>
-        <Toolbar style={{ background: "transparent"}}>
+      <AppBar position="static" style={{ backgroundColor: "transparent", marginBottom: "16px" }}>
+        <Toolbar>
           <img
             src={logo}
             alt="Logo"
-            style={{ maxHeight: "50px", maxWidth: "100%" }}
+            style={{ marginLeft: "90px", maxHeight: "30px", maxWidth: "100%" }}
           />
         </Toolbar>
       </AppBar>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
-            <Carousel style={{ marginTop: "16px" }} showArrows={true} showThumbs={false}>
-              <div>
-                <img src={imgCarousel} alt="Imagem 1" style={{ width: "100%" }} />
-                <p className="legend">Legenda 1</p>
-              </div>
-              <div>
-                <img src={imgCarousel} alt="Imagem 2" style={{ width: "100%" }} />
-                <p className="legend">Legenda 2</p>
-              </div>
-              <div>
-                <img src={imgCarousel} alt="Imagem 3" style={{ width: "100%" }} />
-                <p className="legend">Legenda 3</p>
-              </div>
-            </Carousel>
+            <h1>Login</h1>
+            <p>Faça o login para entrar em sua conta.</p>
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormLogin />

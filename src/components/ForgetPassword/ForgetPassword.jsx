@@ -13,19 +13,33 @@ import {
 const ForgetPassword = () => {
   return (
     <div>
-      <AppBar position="static" style={{ marginBottom: "16px" }}>
-        <Toolbar style={{ background: "transparent" }}>
+      <AppBar
+        position="static"
+        style={{ backgroundColor: "transparent", marginBottom: "16px" }}
+      >
+        <Toolbar>
           <img
             src={logo}
             alt="Logo"
-            style={{ maxHeight: "50px", maxWidth: "100%" }}
+            style={{ marginLeft: "90px", maxHeight: "30px", maxWidth: "100%" }}
           />
         </Toolbar>
       </AppBar>
-      <Container>
+      <Container
+        style={{
+          backgroundColor: "white",
+          marginTop: "50px",
+          padding: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "10px",
+          height: "400px",
+          width: "80%",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
+        }}
+      >
         <Grid container justifyContent="center">
           <Grid item xs={12} sm={6}>
-            <form style={{ width: "500px", height: "500px" }}> {/* Aqui definimos largura e altura */}
+            <form>
               <Typography variant="h5" align="center" gutterBottom>
                 Esqueci minha senha
               </Typography>
