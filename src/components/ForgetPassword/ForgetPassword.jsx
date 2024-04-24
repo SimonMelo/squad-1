@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../img/logogetInfo.png";
+import "./ForgetPass.css";
 import {
   Container,
   Grid,
@@ -12,7 +13,7 @@ import {
 
 const ForgetPassword = () => {
   return (
-    <div>
+    <div className="page-forget">
       <AppBar
         position="static"
         style={{ backgroundColor: "transparent", marginBottom: "16px" }}
@@ -32,13 +33,12 @@ const ForgetPassword = () => {
           padding: "20px",
           border: "1px solid #ccc",
           borderRadius: "10px",
-          height: "400px",
-          width: "80%",
+          height: "65vh",
+          width: "30vw",
           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
         }}
       >
         <Grid container justifyContent="center">
-          <Grid item xs={12} sm={6}>
             <form>
               <Typography variant="h5" align="center" gutterBottom>
                 Esqueci minha senha
@@ -57,7 +57,6 @@ const ForgetPassword = () => {
                 Enviar
               </Button>
             </form>
-          </Grid>
         </Grid>
       </Container>
     </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "./img/logogetInfo.png";
-import imgCarousel from "./img/iconGetInfo.jpeg"
 import FormLogin from "./components/Login/FormLogin";
 import {
   Container,
@@ -8,13 +7,12 @@ import {
   AppBar,
   Toolbar,
 } from "@mui/material";
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./App.css";
 
 const App = () => {
   return (
-    <div>
+    <div className="page-form">
       <AppBar position="static" style={{ backgroundColor: "transparent", marginBottom: "16px" }}>
         <Toolbar>
           <img

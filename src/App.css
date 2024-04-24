@@ -2,15 +2,20 @@
   text-align: center;
 }
 
-body {
+
+.page-form {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   background-image: url('../src/img/imageBackground.png');
   background-size: cover;
   background-position: center;
+  z-index: 0;
 }
 
-body::after {
+.page-form::after {
   content: '';
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
