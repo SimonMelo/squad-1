@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { formatDocument, matchDocument } from "../../utils/document";
-import { Link as RouterLink } from "react-router-dom";
 import { Container, Typography, TextField, Button } from "@mui/material";
 
 const LoginForm = () => {
@@ -61,7 +60,7 @@ useEffect(() => {
         padding: "20px",
         border: "1px solid #ccc",
         borderRadius: "10px",
-        height: "65vh",
+        height: "80vh",
         width: "30vw",
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
       }}
@@ -73,22 +72,44 @@ useEffect(() => {
         align="center"
         gutterBottom
       >
-        Login
+        Cadastre-se
       </Typography>
       <form>
+        Nome/Razão Social
+        <TextField
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          inputProps={{ style: { padding: '5px' } }}
+        />
+        CPF/CNPJ
         <TextField
           fullWidth
           value={document}
           onChange={handleDocumentChange}
           error={Boolean(documentError)}
           helperText={documentError}
-          label="CPF/CNPJ"
           variant="outlined"
           margin="normal"
+          inputProps={{ style: { padding: '5px' } }}
         />
+        Email
         <TextField
           fullWidth
-          label="Senha"
+          variant="outlined"
+          margin="normal"
+          inputProps={{ style: { padding: '5px' } }}
+        />
+        Confirmar email
+        <TextField
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          inputProps={{ style: { padding: '5px' } }}
+        />
+        Senha
+        <TextField
+          fullWidth
           value={password}
           onChange={handlePasswordChange}
           error={Boolean(passwordError)}
@@ -96,13 +117,16 @@ useEffect(() => {
           type="password"
           variant="outlined"
           margin="normal"
+          inputProps={{ style: { padding: '5px' } }}
         />
-        <RouterLink
-          to="/esqueci-minha-senha"
-          className="forgetPass"
-        >
-          Esqueci minha senha
-        </RouterLink>
+        Confirmar senha
+        <TextField
+          fullWidth
+          type='password'
+          variant="outlined"
+          margin="normal"
+          inputProps={{ style: { padding: '5px' } }}
+        />
         <Button
           className="btn-login"
           variant="contained"
@@ -110,7 +134,7 @@ useEffect(() => {
           onClick={handleButton}
           fullWidth
         >
-          Login
+          Cadastrar
         </Button>
       </form>
     </Container>
