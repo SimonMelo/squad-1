@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { formatDocument, matchDocument } from "../../utils/document";
+import { changeState } from "../../utils/loading";
 import { Link as RouterLink } from "react-router-dom";
 import { Container, Typography, TextField, Button } from "@mui/material";
+
 
 const LoginForm = () => {
   const [document, setDocument] = useState("")
   const [password, setPassword] = useState("")
   const [documentError, setDocumentError] = useState("")
   const [passwordError, setPasswordError] = useState("")
+  const [loading,setLoading] = useState(false);
 
   const handleDocumentChange = (event) => {
     const { value } = event.target
@@ -46,6 +49,10 @@ const LoginForm = () => {
     if (!documentError && !passwordError) {
       console.log("Sucesso!")
     }
+}
+
+const handleClick = async () => {
+  changeState(setLoading);  
 }
 
 useEffect(() => {
@@ -107,10 +114,13 @@ useEffect(() => {
           className="btn-login"
           variant="contained"
           color="primary"
-          onClick={handleButton}
+          onClick={() => {
+            handleButton();
+            handleClick();
+          }}
           fullWidth
         >
-          Login
+          { loading ? 'Loading...' : 'Login'}
         </Button>
       </form>
     </Container>
