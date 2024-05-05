@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./Login.css";
+import "./Cadastre.css";
 import { formatDocument, matchDocument } from "../../utils/document";
 import { Container, Typography, TextField, Button } from "@mui/material";
 
-const LoginForm = () => {
+const FormCadastre = () => {
   const [document, setDocument] = useState("")
   const [password, setPassword] = useState("")
   const [documentError, setDocumentError] = useState("")
@@ -75,15 +75,15 @@ useEffect(() => {
         Cadastre-se
       </Typography>
       <form>
-        Nome/Razão Social
         <TextField
+          label={'Nome/Razão Social'}
           fullWidth
           variant="outlined"
           margin="normal"
-          inputProps={{ style: { padding: '5px' } }}
+          inputProps={{ style: { padding: '10px' } }}
         />
-        CPF/CNPJ
         <TextField
+          label={'CPF/CNPJ'}
           fullWidth
           value={document}
           onChange={handleDocumentChange}
@@ -91,24 +91,24 @@ useEffect(() => {
           helperText={documentError}
           variant="outlined"
           margin="normal"
-          inputProps={{ style: { padding: '5px' } }}
+          inputProps={{ style: { padding: '10px' } }}
         />
-        Email
         <TextField
+          label={'Email'}
           fullWidth
           variant="outlined"
           margin="normal"
-          inputProps={{ style: { padding: '5px' } }}
+          inputProps={{ style: { padding: '10px' } }}
         />
-        Confirmar email
         <TextField
+          label={'Confirmar email'}
           fullWidth
           variant="outlined"
           margin="normal"
-          inputProps={{ style: { padding: '5px' } }}
+          inputProps={{ style: { padding: '10px' } }}
         />
-        Senha
         <TextField
+          label={'Senha'}
           fullWidth
           value={password}
           onChange={handlePasswordChange}
@@ -117,17 +117,18 @@ useEffect(() => {
           type="password"
           variant="outlined"
           margin="normal"
-          inputProps={{ style: { padding: '5px' } }}
+          inputProps={{ style: { padding: '10px' } }}
         />
-        Confirmar senha
         <TextField
+          label={'Confirmar senha'}
           fullWidth
           type='password'
           variant="outlined"
           margin="normal"
-          inputProps={{ style: { padding: '5px' } }}
+          inputProps={{ style: { padding: '10px' } }}
         />
         <Button
+          style={{marginTop:20}}
           className="btn-login"
           variant="contained"
           color="primary"
@@ -141,4 +142,4 @@ useEffect(() => {
   )
 }
 
-export default LoginForm
+export default FormCadastre
