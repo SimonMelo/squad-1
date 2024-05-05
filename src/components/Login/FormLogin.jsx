@@ -4,7 +4,7 @@ import { formatDocument, matchDocument } from "../../utils/document";
 import { changeState } from "../../utils/loading";
 import { Link as RouterLink } from "react-router-dom";
 import { Container, Typography, TextField, Button } from "@mui/material";
-
+import { LoadingButton } from "@mui/lab";
 
 const LoginForm = () => {
   const [document, setDocument] = useState("")
@@ -110,7 +110,8 @@ useEffect(() => {
         >
           Esqueci minha senha
         </RouterLink>
-        <Button
+        <LoadingButton
+          loading={loading}
           className="btn-login"
           variant="contained"
           color="primary"
@@ -120,8 +121,8 @@ useEffect(() => {
           }}
           fullWidth
         >
-          { loading ? 'Loading...' : 'Login'}
-        </Button>
+          Login
+        </LoadingButton>
       </form>
     </Container>
   )

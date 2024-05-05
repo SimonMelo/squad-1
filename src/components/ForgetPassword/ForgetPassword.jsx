@@ -8,18 +8,23 @@ import {
   Toolbar,
   Typography,
   TextField,
-  Button,
+  Button
 } from "@mui/material";
-import { changeState } from '../../utils/loading';
+
+import { LoadingButton } from '@mui/lab';
+import { changeState } from "../../utils/loading";
+
 
 const ForgetPassword = () => {
 
   const [loading,setLoading] = useState(false);
 
   const handleClick = async () => {
-    changeState(setLoading);
+    changeState(setLoading)
   }
-
+  
+  
+  
   return (
     <div className="page-forget">
       <AppBar
@@ -61,9 +66,9 @@ const ForgetPassword = () => {
                 variant="outlined"
                 margin="normal"
               />
-              <Button onClick={handleClick} variant="contained" color="primary" fullWidth>
-                {loading?'Loading...':'Enviar'}
-              </Button>
+              <LoadingButton loading={loading}  onClick={handleClick} variant="contained" color="primary" fullWidth>
+                Enviar
+              </LoadingButton>
             </form>
         </Grid>
       </Container>
