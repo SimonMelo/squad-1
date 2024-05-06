@@ -4,10 +4,19 @@ import { formatDocument, matchDocument } from "../../utils/document";
 import { Container, Typography, TextField, Button } from "@mui/material";
 
 const FormRegister = () => {
+  const [name, setName] = useState("")
   const [document, setDocument] = useState("")
+  const [email, setEmail] = useState("")
+  const [confirmEmail, setConfirmEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [documentError, setDocumentError] = useState("")
+  const [nameError, setNameError] = useState("")
+  const [emailError, setEmailError] = useState("")
+  const [confirmEmailError, setConfirmEmailError] = useState("")
   const [documentError, setDocumentError] = useState("")
   const [passwordError, setPasswordError] = useState("")
+  const [confirmPasswordError, setConfirmPasswordError] = useState("")
 
   const handleDocumentChange = (event) => {
     const { value } = event.target
@@ -30,19 +39,43 @@ const FormRegister = () => {
   const handleButton = () => {
     let documentError = ''
     let passwordError = ''
+    let nameError = ''
+    let confirmPassError = ''
+    let emailError = ''
+    let confirmEmailError = ''
 
     if (!matchDocument(document)) {
         documentError = "CPF/CNPJ inválido."
     }
-
+ 
     if (password.length < 8) {
         passwordError = "A senha deve ter no mínimo 8 caracteres."
     }
 
+    if (name.length ?? 0) {
+        nameError = "Campo obrigatório."
+    }
+
+    if (confirmPassword.length < 8) {
+        confirmPasswordError = "A senha deve ter no mínimo 8 caracteres."
+    }
+
+    if (password === confirmPassword) {
+        confirmPasswordError = "As senhas devem ser iguais."
+    }
+
+    if (email === confirmEmail) {
+        confirmEmailError = "Os e-mails devem ser iguais."
+    }
+    
     setDocumentError(documentError)
     setPasswordError(passwordError)
+    setConfirmPasswordError(confirmPasswordError)
+    setEmailError(emailError)
+    setNameError(nameError)
+    setConfirmEmailError(confirmEmailError)
 
-    if (!documentError && !passwordError) {
+    if (!documentError && !passwordError && !confirmEmailError && !emailError && !confirmPasswordError && !nameError) {
       console.log("Sucesso!")
     }
 }
@@ -50,7 +83,11 @@ const FormRegister = () => {
 useEffect(() => {
   setDocumentError("")
   setPasswordError("")
-}, [document, password])
+  setNameError("")
+  setConfirmPasswordError("")
+  setEmailError("")
+  setConfirmEmailError("")
+}, [document, name, email, confirmEmail, confirmPassword, password])
 
   return (
     <Container
@@ -78,6 +115,9 @@ useEffect(() => {
         <TextField
           label={'Nome/Razão Social'}
           fullWidth
+          value={name.trimStart()}
+          error={Boolean(nameError)}
+          helperText={nameError}
           variant="outlined"
           margin="normal"
         />
@@ -93,12 +133,18 @@ useEffect(() => {
         />
         <TextField
           label={'Email'}
+          value={email}
+          error={Boolean(emailError)}
+          helperText={emailError}
           fullWidth
           variant="outlined"
           margin="normal"
         />
         <TextField
           label={'Confirmar email'}
+          value={confirmEmail}
+          error={Boolean(confirmEmailError)}
+          helperText={confirmEmailError}
           fullWidth
           variant="outlined"
           margin="normal"
@@ -116,6 +162,10 @@ useEffect(() => {
         />
         <TextField
           label={'Confirmar senha'}
+          value={confirmPassword}
+          onChange={handlePasswordChange}
+          error={Boolean(confirmPasswordError)}
+          helperText={confirmPasswordError}
           fullWidth
           type='password'
           variant="outlined"
