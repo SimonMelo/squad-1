@@ -27,16 +27,16 @@ const ForgetPassword = () => {
         </Toolbar>
       </AppBar>
       <Container
-        style={{
-          backgroundColor: "white",
-          marginTop: "50px",
-          padding: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "10px",
-          height: "65vh",
-          width: "30vw",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
-        }}
+       style={{
+        backgroundColor: "white",
+        marginTop: "50px",
+        padding: "20px",
+        border: "1px solid #ccc",
+        borderRadius: "10px",
+        width: "30vw",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
+        minHeight: "400px",
+      }}
       >
         <Grid container justifyContent="center">
             <form>
