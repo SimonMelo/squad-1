@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { formatDocument, matchDocument } from "../../utils/document";
-import { changeState } from "../../utils/loading";
 import { Link as RouterLink } from "react-router-dom";
-import { Container, Typography, TextField, Button } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { Container, Typography, TextField, Button, CircularProgress  } from "@mui/material";
+
 
 const LoginForm = () => {
   const [document, setDocument] = useState("")
   const [password, setPassword] = useState("")
   const [documentError, setDocumentError] = useState("")
   const [passwordError, setPasswordError] = useState("")
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const handleDocumentChange = (event) => {
     const { value } = event.target
@@ -25,7 +24,7 @@ const LoginForm = () => {
 
   const handlePasswordChange = (event) => {
     const { value } = event.target
-
+    
     const passwordValue = value.trim().slice(0, 20)
 
     setPassword(passwordValue)
@@ -47,13 +46,13 @@ const LoginForm = () => {
     setPasswordError(passwordError)
 
     if (!documentError && !passwordError) {
-      console.log("Sucesso!")
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000)
     }
 }
 
-const handleClick = async () => {
-  changeState(setLoading);  
-}
 
 useEffect(() => {
   setDocumentError("")
@@ -110,19 +109,16 @@ useEffect(() => {
         >
           Esqueci minha senha
         </RouterLink>
-        <LoadingButton
-          loading={loading}
+        <Button
           className="btn-login"
           variant="contained"
           color="primary"
-          onClick={() => {
-            handleButton();
-            handleClick();
-          }}
+          onClick={handleButton}
           fullWidth
+          disabled={loading}
         >
-          Login
-        </LoadingButton>
+          {loading ? <CircularProgress size={24} color="inherit" /> : "Login"}
+        </Button>
       </form>
     </Container>
   )

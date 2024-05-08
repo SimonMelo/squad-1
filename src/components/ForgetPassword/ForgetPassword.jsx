@@ -8,19 +8,20 @@ import {
   Toolbar,
   Typography,
   TextField,
-  Button
+  Button,
+  CircularProgress
 } from "@mui/material";
-
-import { LoadingButton } from '@mui/lab';
-import { changeState } from "../../utils/loading";
 
 
 const ForgetPassword = () => {
 
   const [loading,setLoading] = useState(false);
 
-  const handleClick = async () => {
-    changeState(setLoading)
+  const handleButton = async () => {
+    setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000)
   }
   
   
@@ -66,9 +67,16 @@ const ForgetPassword = () => {
                 variant="outlined"
                 margin="normal"
               />
-              <LoadingButton loading={loading}  onClick={handleClick} variant="contained" color="primary" fullWidth>
-                Enviar
-              </LoadingButton>
+              <Button
+          className="btn-login"
+          variant="contained"
+          color="primary"
+          onClick={handleButton}
+          fullWidth
+          disabled={loading} 
+        >
+          {loading ? <CircularProgress size={24} color="inherit" /> : "Enviar"}
+        </Button>
             </form>
         </Grid>
       </Container>
