@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import logo from "../../img/logogetInfo.png";
 import "./ForgetPass.css";
 import {
@@ -9,9 +9,23 @@ import {
   Typography,
   TextField,
   Button,
+  CircularProgress
 } from "@mui/material";
 
+
 const ForgetPassword = () => {
+
+  const [loading,setLoading] = useState(false);
+
+  const handleButton = async () => {
+    setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000)
+  }
+  
+  
+  
   return (
     <div className="page-forget">
       <AppBar
@@ -53,9 +67,16 @@ const ForgetPassword = () => {
                 variant="outlined"
                 margin="normal"
               />
-              <Button variant="contained" color="primary" fullWidth>
-                Enviar
-              </Button>
+              <Button
+          className="btn-login"
+          variant="contained"
+          color="primary"
+          onClick={handleButton}
+          fullWidth
+          disabled={loading} 
+        >
+          {loading ? <CircularProgress size={24} color="inherit" /> : "Enviar"}
+        </Button>
             </form>
         </Grid>
       </Container>

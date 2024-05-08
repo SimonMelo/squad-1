@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { formatDocument, matchDocument } from "../../utils/document";
 import { Link as RouterLink } from "react-router-dom";
-import { Container, Typography, TextField, Button } from "@mui/material";
+import { Container, Typography, TextField, Button, CircularProgress  } from "@mui/material";
+
 
 const LoginForm = () => {
   const [document, setDocument] = useState("")
   const [password, setPassword] = useState("")
   const [documentError, setDocumentError] = useState("")
   const [passwordError, setPasswordError] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleDocumentChange = (event) => {
     const { value } = event.target
@@ -22,7 +24,7 @@ const LoginForm = () => {
 
   const handlePasswordChange = (event) => {
     const { value } = event.target
-
+    
     const passwordValue = value.trim().slice(0, 20)
 
     setPassword(passwordValue)
@@ -44,9 +46,13 @@ const LoginForm = () => {
     setPasswordError(passwordError)
 
     if (!documentError && !passwordError) {
-      console.log("Sucesso!")
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000)
     }
 }
+
 
 useEffect(() => {
   setDocumentError("")
@@ -109,8 +115,9 @@ useEffect(() => {
           color="primary"
           onClick={handleButton}
           fullWidth
+          disabled={loading}
         >
-          Login
+          {loading ? <CircularProgress size={24} color="inherit" /> : "Login"}
         </Button>
       </form>
     </Container>
