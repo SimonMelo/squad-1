@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("")
   const [documentError, setDocumentError] = useState("")
   const [passwordError, setPasswordError] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleDocumentChange = (event) => {
     const { value } = event.target
