@@ -3,6 +3,7 @@ import "../../App.css";
 import { formatDocument, matchDocument } from "../../utils/document";
 import { Container, Typography, TextField, Button, CircularProgress } from "@mui/material";
 import { validateEmail } from "../../utils/email";
+import { registerPost } from "../../services/Login";
 
 const FormRegister = () => {
   const [name, setName] = useState("");
@@ -91,10 +92,26 @@ const FormRegister = () => {
     setConfirmEmailError(confirmEmailError);
 
     if (!documentError && !passwordError && !confirmPassError && !emailError && !nameError && !confirmEmailError) {
-      setLoading(true);
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
+      setLoading(true)
+      const data = {
+        name: name,
+        cpfCnpj: document,
+        email: email,
+        confirmEmail: confirmEmail,
+        password: password,
+        confirmPassword: confirmPassword
+      }
+      registerPost(data)
+        .then(response => {
+          console.log("Registro bem-sucedido:", response.data)
+        })
+        .catch(error => {
+          console.error("Erro ao registrar:", error)
+        })
+        .finally(() => {
+          setLoading(false)
+          console.log("Finalizado.")
+        });
     }
   };
   useEffect(() => {
