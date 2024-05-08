@@ -1,6 +1,5 @@
 import React from "react";
-import logo from "./img/logogetInfo.png";
-import FormLogin from "./components/Login/FormLogin";
+import logo from "../../img/logogetInfo.png";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Container,
@@ -8,13 +7,13 @@ import {
   AppBar,
   Toolbar,
 } from "@mui/material";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./App.css";
+import "../../App.css";
+import FormRegister from "./FormRegister";
 
-const App = () => {
+const ScreenRegister = () => {
   return (
     <div className="page-form">
-      <AppBar position="static" style={{ backgroundColor: "transparent", marginBottom: "16px" }}>
+      <AppBar position="static" style={{ backgroundColor: "transparent", marginBottom: "16 px" }}>
         <Toolbar>
           <img
             src={logo}
@@ -26,12 +25,11 @@ const App = () => {
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
-            <h1>Login</h1>
-            <p>Faça o login para entrar em sua conta.</p>
-            <p>Não tem uma conta ainda? <RouterLink to="/register" className="login-link">Registre-se</RouterLink>.</p>
+            <h1>Crie uma nova conta</h1>
+            <p>Já está registrado? <RouterLink className="login-link" to="/">Faça Login</RouterLink></p>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <FormLogin />
+            <FormRegister />
           </Grid>
         </Grid>
       </Container>
@@ -39,4 +37,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ScreenRegister;
