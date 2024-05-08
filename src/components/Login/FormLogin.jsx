@@ -31,6 +31,7 @@ const LoginForm = () => {
   }
 
   const handleButton = () => {
+    setLoading(true)
     let documentError = ''
     let passwordError = ''
 

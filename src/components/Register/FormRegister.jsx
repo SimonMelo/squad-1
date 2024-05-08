@@ -40,6 +40,7 @@ const FormRegister = () => {
   };
 
   const handleButton = () => {
+    setLoading(true)
     let documentError = "";
     let passwordError = "";
     let nameError = "";
@@ -67,7 +68,6 @@ const FormRegister = () => {
       confirmPassError = "As senhas devem ser iguais.";
     }
 
-    // Verifica se o campo de e-mail está vazio
     if (!email.trim()) {
       emailError = "Campo obrigatório.";
     }
