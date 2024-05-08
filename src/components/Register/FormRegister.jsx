@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { formatDocument, matchDocument } from "../../utils/document";
-import { Container, Typography, TextField, Button } from "@mui/material";
+import { Container, Typography, TextField, Button, CircularProgress } from "@mui/material";
 import { validateEmail } from "../../utils/email";
 
 const FormRegister = () => {
@@ -16,7 +16,9 @@ const FormRegister = () => {
   const [emailError, setEmailError] = useState("");
   const [confirmEmailError, setConfirmEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("")
+  const [loading, setLoading] = useState(false)
+
 
   const handleDocumentChange = (event) => {
     const { value } = event.target;
@@ -43,27 +45,27 @@ const FormRegister = () => {
     let confirmPassError = "";
     let emailError = "";
     let confirmEmailError = "";
-  
+
     if (!matchDocument(document)) {
       documentError = "CPF/CNPJ inválido.";
     }
-  
+
     if (password.length < 8) {
       passwordError = "A senha deve ter no mínimo 8 caracteres.";
     }
-  
+
     if (!name.trim()) {
       nameError = "Campo obrigatório.";
     }
-  
+
     if (confirmPassword.length < 8) {
       confirmPassError = "A senha deve ter no mínimo 8 caracteres.";
     }
-  
+
     if (password !== confirmPassword) {
       confirmPassError = "As senhas devem ser iguais.";
     }
-  
+
     // Verifica se o campo de e-mail está vazio
     if (!email.trim()) {
       emailError = "Campo obrigatório.";
@@ -72,26 +74,27 @@ const FormRegister = () => {
     if (!validateEmail(email)) {
       emailError = "E-mail inválido."
     }
-  
-    // Verifica se o campo de confirmar e-mail está vazio
+
     if (!confirmEmail.trim()) {
       confirmEmailError = "Campo obrigatório.";
     }
-  
-    // Verifica se ambos os campos de e-mail estão preenchidos antes de comparar
+
     if (email.trim() && confirmEmail.trim() && email !== confirmEmail) {
       confirmEmailError = "Os e-mails devem ser iguais.";
     }
-  
+
     setDocumentError(documentError);
     setPasswordError(passwordError);
     setConfirmPasswordError(confirmPassError);
     setEmailError(emailError);
     setNameError(nameError);
     setConfirmEmailError(confirmEmailError);
-  
+
     if (!documentError && !passwordError && !confirmPassError && !emailError && !nameError && !confirmEmailError) {
-      console.log("Sucesso!");
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     }
   };
   useEffect(() => {
@@ -105,16 +108,16 @@ const FormRegister = () => {
 
   return (
     <Container
-    style={{
-      backgroundColor: "white",
-      marginTop: "50px",
-      padding: "20px",
-      border: "1px solid #ccc",
-      borderRadius: "10px",
-      width: "30vw",
-      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
-      minHeight: "400px",
-    }}
+      style={{
+        backgroundColor: "white",
+        marginTop: "50px",
+        padding: "20px",
+        border: "1px solid #ccc",
+        borderRadius: "10px",
+        width: "30vw",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
+        minHeight: "400px",
+      }}
       maxWidth="sm"
     >
       <Typography variant="h5" align="center" gutterBottom>
@@ -196,8 +199,9 @@ const FormRegister = () => {
             color="primary"
             onClick={handleButton}
             fullWidth
+            disabled={loading}
           >
-            Cadastrar
+            {loading ? <CircularProgress size={24} color="inherit" /> : "Cadastrar"}
           </Button>
         </div>
       </form>

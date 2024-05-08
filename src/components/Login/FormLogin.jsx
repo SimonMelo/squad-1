@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { formatDocument, matchDocument } from "../../utils/document";
 import { Link as RouterLink } from "react-router-dom";
-import { Container, Typography, TextField, Button, CircularProgress  } from "@mui/material";
-
+import { Container, Typography, TextField, Button, CircularProgress } from "@mui/material";
 
 const LoginForm = () => {
   const [document, setDocument] = useState("")
@@ -46,10 +45,10 @@ const LoginForm = () => {
     setPasswordError(passwordError)
 
     if (!documentError && !passwordError) {
-      setLoading(true)
+      setLoading(true);
       setTimeout(() => {
-        setLoading(false)
-      }, 2000)
+        setLoading(false);
+      }, 2000);
     }
 }
 
