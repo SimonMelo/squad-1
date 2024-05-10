@@ -30,3 +30,8 @@ export const loginPost = (newData) => {
     }
     return axios.post(`${uriEndpoint}/login`, postData)
 }
+
+//Funcao para representar a rota de mudar a senha
+export const updatePassword = (newData) => {
+    return {data:`Senha atualizada para ${newData?.password}`};
+}
