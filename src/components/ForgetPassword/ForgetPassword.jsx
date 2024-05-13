@@ -16,8 +16,7 @@ const ForgetPassword = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const handleButton = () => {
-    setLoading(true);
+  const handleButton = () => {    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2000);

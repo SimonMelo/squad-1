@@ -17,8 +17,8 @@ export const registerPost = (newData) => {
 export const newPasswordPost = (newData) => {
     const postData = {
         email: newData?.email,
-        password: newData?.password,
-        newPassword: newData?.newPassword
+        newPassword: newData?.newPassword,
+        confirmPassword: newData?.confirmPassword
     }
     return axios.post(`${uriEndpoint}/reset-password`, postData)
 }
@@ -29,9 +29,4 @@ export const loginPost = (newData) => {
         password: newData?.password,
     }
     return axios.post(`${uriEndpoint}/login`, postData)
-}
-
-//Funcao para representar a rota de mudar a senha
-export const updatePassword = (newData) => {
-    return {data:`Senha atualizada para ${newData?.password}`};
 }

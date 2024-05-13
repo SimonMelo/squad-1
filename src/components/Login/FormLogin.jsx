@@ -31,6 +31,7 @@ const LoginForm = () => {
   }
 
   const handleButton = () => {
+    setLoading(true)
     let documentError = ''
     let passwordError = ''
 
@@ -114,7 +115,7 @@ useEffect(() => {
           margin="normal"
         />
         <RouterLink
-          to="/esqueci-minha-senha"
+          to="/recuperar-senha"
           className="forgetPass"
         >
           Esqueci minha senha
