@@ -1,66 +1,43 @@
-.App {
-  text-align: center;
-}
-
-
-.page-form {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../src/img/imageBackground.png');
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-}
-
-.login-link {
-  text-decoration:none;
-  color:black;
-  font-weight: bold;
-}
-
-.page-form::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(90deg, rgba(0, 210, 155, 0.5), rgba(68, 138, 255, 0.5));
-  z-index: -1;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cabecalho {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(90deg, rgba(0, 210, 155, 0.5), rgba(68, 138, 255, 0.5))
 }
 
-.App-link {
-  color: #61dafb;
+.barra-superior {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.container:hover .barra-superior {
+  background-color: grey;
+}
+
+#avatar{
+  padding-right: 70px;
+  padding-top: 3px;
+}
+
+#wallet{
+  margin: 50px;
+  margin-left: 60px;
+  display: flex;
+}
+
+.carteira{
+  height: 50px;
+  width: 50px;
+}
+
+#pts{
+  margin-left: 15px;
 }

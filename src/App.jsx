@@ -1,42 +1,40 @@
-import React from "react";
-import logo from "./img/logogetInfo.png";
-import FormLogin from "./components/Login/FormLogin";
-import { Link as RouterLink } from "react-router-dom";
-import {
-  Container,
-  Grid,
-  AppBar,
-  Toolbar,
-} from "@mui/material";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./App.css";
+import React from 'react';
+import './App.css';
+import account from './icons/account.png';
+import wallet from './icons/wallet.png'
+import { useState } from 'react';
 
-const App = () => {
+const Home = () => {
+  const [pontos, setPontos] = useState(0);
+
+  const aumentarPontos = () => {
+    setPontos(pontos + 1);
+  };
+
+  const diminuirPontos = () => {
+    if (pontos > 0) {
+      setPontos(pontos - 1);
+    }
+  };
+
   return (
-    <div className="page-form">
-      <AppBar position="static" style={{ backgroundColor: "transparent", marginBottom: "16px" }}>
-        <Toolbar>
-          <img
-            src={logo}
-            alt="Logo"
-            style={{ marginLeft: "90px", maxHeight: "30px", maxWidth: "100%" }}
-          />
-        </Toolbar>
-      </AppBar>
-      <Container>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <h1>Login</h1>
-            <p>Faça o login para entrar em sua conta.</p>
-            <p>Não tem uma conta ainda? <RouterLink to="/register" className="login-link">Registre-se</RouterLink>.</p>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <FormLogin />
-          </Grid>
-        </Grid>
-      </Container>
+    <div>
+      <header className="cabecalho">
+        <div className="container">
+          <div className="barra-superior"></div>
+          <div className="barra-superior"></div>
+          <div className="barra-superior"></div>
+        </div>
+        <img src={account} id='avatar' alt='avatar' />
+      </header>
+      <main>
+        <div id='wallet'>
+          <img src={wallet} className='carteira'></img>
+          <h1 id='pts'>{pontos} pts</h1>
+        </div>
+      </main>
     </div>
   );
 };
 
-export default App;
+export default Home;
