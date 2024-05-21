@@ -1,43 +1,66 @@
-.cabecalho {
-  display: flex;
+.App {
+  text-align: center;
+}
+
+
+.page-form {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../src/img/imageBackground.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.login-link {
+  text-decoration:none;
+  color:black;
+  font-weight: bold;
+}
+
+.page-form::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 50px;
-  background: linear-gradient(90deg, rgba(0, 210, 155, 0.5), rgba(68, 138, 255, 0.5))
+  height: 100%;
+  background-image: linear-gradient(90deg, rgba(0, 210, 155, 0.5), rgba(68, 138, 255, 0.5));
+  z-index: -1;
 }
 
-.barra-superior {
-  width: 35px;
-  height: 5px;
-  background-color: black;
-  margin: 6px 0;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.container {
-  display: inline-block;
-  cursor: pointer;
-  margin-top: 5px;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-.container:hover .barra-superior {
-  background-color: grey;
-}
-
-#avatar{
-  padding-right: 70px;
-  padding-top: 3px;
-}
-
-#wallet{
-  margin: 50px;
-  margin-left: 60px;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-.carteira{
-  height: 50px;
-  width: 50px;
+.App-link {
+  color: #61dafb;
 }
 
-#pts{
-  margin-left: 15px;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

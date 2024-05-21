@@ -4,6 +4,7 @@ import ForgetPassword from "../components/ForgetPassword/ForgetPassword";
 import App from "../App";
 import NotFoundPage from "../components/NotFound/NotFoundPage";
 import ScreenRegister from "../components/Register/ScreenRegister";
+import Home from "../components/Home/Home";
 
 const RoutesView = () => {
     return (
@@ -12,6 +13,7 @@ const RoutesView = () => {
                 <Route exact path="/" element={<App />} />
                 <Route path="/esqueci-minha-senha" element={<ForgetPassword />} />
                 <Route path="/register" element={<ScreenRegister />} />
+                <Route path="/Home" element={<Home />} />
                 <Route path="/404" element={<NotFoundPage />} />
             </Routes>
         </Router>
